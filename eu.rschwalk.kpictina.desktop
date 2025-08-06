@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KPicTina
+Name[de]=KPicTina
+Exec=kpictina
+Icon=kde
+Type=Application
+Terminal=false
+Categories=Graphics
