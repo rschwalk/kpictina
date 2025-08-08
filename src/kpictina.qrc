@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="res">
+        <file alias="img">../tmp/img2.jpg</file>
+        <file alias="icon">../tmp/icon.png</file>
+    </qresource>
+</RCC>
