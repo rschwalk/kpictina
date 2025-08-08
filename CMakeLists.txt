@@ -1,24 +1,37 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(kpictina)
+project(kpictina_project)
 
 find_package(ECM 6.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
 include(ECMUninstallTarget)
-
+include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMFindQmlModule)
+include(ECMQmlModule)
+
+find_package(Qt6 REQUIRED COMPONENTS
+        Core
+        Quick
+        Test
+        Gui
+        QuickControls2
+        Widgets
+)
+
+find_package(KF6 REQUIRED COMPONENTS
+        Kirigami
+        I18n
+        CoreAddons
+        QQC2DesktopStyle
+        IconThemes
+)
+
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
-find_package(KF6 REQUIRED COMPONENTS QQC2DesktopStyle)
 
-add_custom_target(kpictina
-        ALL
-        COMMAND cargo build --target-dir ${CMAKE_CURRENT_BINARY_DIR}
-)
+add_subdirectory(src)
 
-install(
-        PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/debug/kpictina
-        DESTINATION ${KDE_INSTALL_BINDIR}
-)
+install(PROGRAMS eu.rschwalk.kpictina.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 
-install(FILES eu.rschwalk.kpictina.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
