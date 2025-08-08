@@ -1,4 +1,5 @@
-set(PROJECT_EXEC kpictina)
+#set(QT_QML_GENERATE_QMLLS_INI ON)
+
 add_executable(kpictina)
 
 ecm_add_qml_module(kpictina
