@@ -30,6 +30,9 @@ target_link_libraries(kpictina
         KF6::I18n
         KF6::CoreAddons
         KF6::IconThemes
+        kpictina-components
 )
 
 install(TARGETS kpictina ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+
+add_subdirectory(components)

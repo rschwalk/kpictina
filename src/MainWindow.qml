@@ -3,7 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
-import ImageModel 1.0
+import eu.rschwalk.kpictina.components
 
 // Provides basic features needed for all kirigami applications
 Kirigami.ApplicationWindow {
@@ -24,9 +24,6 @@ Kirigami.ApplicationWindow {
         collapsed: true
     }
 
-    ImageModel {
-        id: picModel
-    }
 
     // ListModel {
     //     id: picModel
@@ -51,28 +48,6 @@ Kirigami.ApplicationWindow {
                 icon.name: "overflow-menu"
             }
         ]
-        GridView {
-            id: grid
-            anchors.fill: parent
-            clip: true
-            model: picModel
-            cellWidth: 124 + 10
-            cellHeight: 124 + 10
-            delegate: Component {
-                Kirigami.Card {
-                    width: grid.cellWidth - 10
-                    height: grid.cellHeight - 10
-                    anchors.margins: 10
-                    Image {
-                        source: model.path
-                        anchors.fill: parent
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        fillMode: Image.PreserveAspectFit
-                        sourceSize.width: 124
-                        sourceSize.height: 124
-                    }
-                }
-            }
-        }
+    ImageGrid {}
     }
 }
