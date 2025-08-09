@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
+import ImageModel 1.0
 
 // Provides basic features needed for all kirigami applications
 Kirigami.ApplicationWindow {
@@ -23,23 +24,33 @@ Kirigami.ApplicationWindow {
         collapsed: true
     }
 
-    ListModel {
+    ImageModel {
         id: picModel
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
-        ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
     }
+
+    // ListModel {
+    //     id: picModel
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/img2.jpg"}
+    //     ListElement { path: "file:/home/rschwalk/proj/kpictina/tmp/icon.png"}
+    //     ListElement { path: "qrc:/res/icon"}
+    // }
 
     // Set the first page that will be loaded when the app opens
     // This can also be set to an id of a Kirigami.Page
     pageStack.initialPage: Kirigami.ScrollablePage {
+        actions: [
+            Kirigami.Action {
+                icon.name: "overflow-menu"
+            }
+        ]
         GridView {
             id: grid
             anchors.fill: parent
@@ -53,7 +64,7 @@ Kirigami.ApplicationWindow {
                     height: grid.cellHeight - 10
                     anchors.margins: 10
                     Image {
-                        source: path
+                        source: model.path
                         anchors.fill: parent
                         anchors.horizontalCenter: parent.horizontalCenter
                         fillMode: Image.PreserveAspectFit

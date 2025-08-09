@@ -10,6 +10,8 @@
 #include <KLocalizedString>
 #include <KIconTheme>
 
+#include "image_model.h"
+
 int main(int argc, char *argv[])
 {
     KIconTheme::initTheme();
@@ -24,6 +26,8 @@ int main(int argc, char *argv[])
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
         QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
     }
+
+    qmlRegisterType<ImageModel>("ImageModel", 1, 0, "ImageModel");
 
     QQmlApplicationEngine engine;
 

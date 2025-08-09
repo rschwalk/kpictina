@@ -10,12 +10,14 @@ ecm_add_qml_module(kpictina
 target_sources(kpictina
         PRIVATE
         main.cpp
+        image_model.cpp
         kpictina.qrc
 )
 
 ecm_target_qml_sources(kpictina
         SOURCES
         MainWindow.qml
+#        kpictina.qrc
 )
 
 target_link_libraries(kpictina
