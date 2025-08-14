@@ -2,6 +2,8 @@
 
 add_executable(kpictina)
 
+kde_enable_exceptions()
+
 ecm_add_qml_module(kpictina
         URI
         eu.rschwalk.pictina
@@ -11,13 +13,14 @@ target_sources(kpictina
         PRIVATE
         main.cpp
         image_model.cpp
+        image_library.cpp
         kpictina.qrc
 )
 
 ecm_target_qml_sources(kpictina
         SOURCES
         MainWindow.qml
-#        kpictina.qrc
+        #        kpictina.qrc
 )
 
 target_link_libraries(kpictina

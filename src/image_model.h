@@ -6,6 +6,8 @@
 
 #include <QAbstractListModel>
 
+#include "image_library.h"
+
 class ImageModel : public QAbstractListModel
 {
 public:
@@ -19,7 +21,8 @@ public:
     QVariant data(const QModelIndex& index, int role) const override;
 
     ImageModel();
+
 private:
-    QStringList m_images = {
-    };
+    QStringList m_images;
+    ImageLibrary m_imageLibrary;
 };
